@@ -11,8 +11,10 @@
 // ****                                            ****
 // ****************************************************
 
-var Animal = function (typeValue) {
+var Animal = function (typeValue, sex, age) {
   this._type = typeValue;
+  this._sex = sex;
+  this._age = age;
 };
 
 Object.defineProperty(Animal.prototype, "type", {
@@ -25,8 +27,38 @@ Object.defineProperty(Animal.prototype, "type", {
 });
 
 Animal.prototype.talk = function () {
-  console.log(`Hi, I'm an Animal, but also a ${this.type}`);
+  console.log(
+    `Hi, I'm an Animal, but also a ${this.type}, I have ${this._age} years and I'm ${this._sex}`
+  );
 };
 
-let rabbit = new Animal("Rabbit");
+Animal.prototype.hunt = function () {
+  console.log(`I'm hunting`);
+};
+
+Animal.prototype.run = function () {
+  console.log(`I'm running`);
+};
+
+var Mammal = function (typeValue, sex, age) {
+  this._type = typeValue;
+  this._sex = sex;
+  this._age = age;
+};
+
+Mammal.prototype.hunt = function () {
+  console.log(`I'm hunting a fish`);
+}
+
+Object.setPrototypeOf(Mammal.prototype, Animal.prototype);
+
+let rabbit = new Animal("Rabbit", "male", "2");
 rabbit.talk();
+rabbit.hunt();
+rabbit.run();
+
+let dolphin = new Mammal("dolphin", "female", "4");
+
+dolphin.talk();
+dolphin.hunt();
+dolphin.run();
