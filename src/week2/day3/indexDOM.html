@@ -1,13 +1,59 @@
 <!-- Take this file and open it on a browser, then open the console
     inside developer tools -->
-<script>
-    (function(){
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hola Browser</title>
+  </head>
+  <body>
+    <header>
+      <h1>Home</h1>
+    </header>
+    <main>
+      <form id="register_form" action=""></form>
+    </main>
+    <button id="add_button">click in here</button>
+
+    <script>
+      (function () {
         "use strict";
-    })()
-</script>
+
+        const registerForm = document.getElementById("register_form");
+
+        const inputToAdd = document.createElement("input");
+        inputToAdd.value = 'One'
+        registerForm.append(inputToAdd);
+
+        const inputToAddTwo = document.createElement("input");
+        inputToAddTwo.value = 'Two';
+        registerForm.append(inputToAddTwo);
+        
+
+        const addButton = document.getElementById("add_button");
+
+        addButton.addEventListener("click", () => {
+          const quantity = prompt("Por favor, ingrese la cantidad");
+
+          for (let i = 0; i < quantity; i++) {
+            const inputToAdd = document.createElement("input");
+            inputToAdd.value = i;
+            registerForm.append(inputToAdd);
+          }
+
+          registerForm.classList.remove('hiddn');
+          registerForm.classList.add('hiddn');
+        });
+      })();
+    </script>
+  </body>
+</html>
 
 <!-- Now it's your turn to make some changes
-    - Add at least 2 DOM elements, via code, DOH
+    - Add at least 2 DOM elements, via code, DOM
     - Make a button, ask a quantity and add those elements
 
     ****************************************************

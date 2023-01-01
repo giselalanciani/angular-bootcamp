@@ -1,10 +1,73 @@
 <!-- Take this file and open it on a browser, then open the console
 inside developer tools -->
-<script>
-    (function(){
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events</title>
+  </head>
+  <body>
+    <label for="name">Name: </label>
+    <input id="name" type="text" />
+    <label for="email">Email: </label>
+    <input id="email" type="text" />
+
+    <style>
+      #area {
+        border: 1px solid black;
+        width: 90%;
+        height: 180px;
+        cursor: pointer;
+      }
+    </style>
+    <div id="area">Multi-touch here</div>
+
+    <button id="login_button">Login</button>
+    <button id="sign_up_button">Sign up</button>
+
+    <dl>
+        <dt>Position x:</dt>
+        <dd id="postion_x"></dd>
+        <dt>Position y:</dt>
+        <dd id="postion_y"></dd>
+    </dl>
+
+    <script>
+      (function () {
         "use strict";
-    })()
-</script>
+
+        document.addEventListener("keypress", (event) => {
+          console.log("usted apreto: ", event.key);
+        });
+
+        const positionXElement =  document.getElementById('postion_x')
+        const positionYElement =  document.getElementById('postion_y')
+        document.onmousemove =  (event) => {
+            positionXElement.textContent = event.clientX;
+            positionYElement.textContent = event.clientY;
+        };
+        
+        // document.addEventListener("mytext",(event) => {
+        //     console.log("quiero hacer focus", event.)
+        // });
+
+        const nameInput = document.getElementById("name");
+        nameInput.addEventListener("focus", (event) => {
+          console.log("hizo foco ! en el name input!!");
+        });
+
+        const emailInput = document.getElementById("email");
+        emailInput.addEventListener("focus", (event) => {
+          console.log("hizo foco ! en el email input!!");
+        });
+        
+      })();
+    </script>
+  </body>
+</html>
 
 <!-- Now it's your turn to make some changes
     - Draw some buttons, make your way between the click events and let me know they are pressed
