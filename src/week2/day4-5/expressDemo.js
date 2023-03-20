@@ -1,4 +1,4 @@
-const express = ;
+const express = require("express");
 const app = express();
 const port = 3000;
 
@@ -10,6 +10,7 @@ app.listen(port, () => {
     console.log('Example server listening on port ' + port);
     console.log('Enter http://localhost:' + port + ' on your browser')
 })
+module.exports = router;
 
 // First things first, this won't work. It's your job to fix it
 // Just a clue, that variable called express is a module, so you need to bring it in.
